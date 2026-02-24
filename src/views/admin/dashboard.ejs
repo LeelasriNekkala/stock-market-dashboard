@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 30px;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+
+    th {
+      background: #1e293b;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-add {
+      background: #22c55e;
+      color: white;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Admin Dashboard</h1>
+
+  <!-- ================= USERS ================= -->
+  <div class="section">
+    <h2>👥 All Users</h2>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+
+      <% if (!users || users.length === 0) { %>
+        <tr>
+          <td colspan="3">No users found</td>
+        </tr>
+      <% } else { %>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </table>
+  </div>
+
+  <!-- ================= ADD STOCK ================= -->
+  <div class="section">
+    <h2>📈 Add New Stock</h2>
+
+    <form action="/api/stocks/add" method="POST">
+      <input type="text" name="symbol" placeholder="Symbol (AAPL)" required />
+      <input type="text" name="name" placeholder="Company Name" />
+      <input type="number" name="price" placeholder="Price" step="0.01" />
+      <button type="submit" class="btn-add">Add Stock</button>
+    </form>
+  </div>
+
+  <!-- ================= STOCK LIST ================= -->
+  <div class="section">
+    <h2>📊 Existing Stocks</h2>
+
+    <table>
+      <tr>
+        <th>Symbol</th>
+        <th>Current Price</th>
+        <th>Action</th>
+      </tr>
+
+      <% if (!stocks || stocks.length === 0) { %>
+        <tr>
+          <td colspan="3">No stocks available</td>
+        </tr>
+      <% } else { %>
+        <% stocks.forEach(stock => { %>
+          <tr>
+            <td><%= stock.symbol %></td>
+            <td><%= stock.current !== undefined && stock.current !== null ? stock.current : stock.price || 0 %></td>
+            <td>
+                <button type="button" class="btn-delete" data-id="<%= stock._id %>">Delete</button>
+            </td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </table>
+  </div>
+
+  <!-- ================= EXTERNAL SCRIPT ================= -->
+  <script src="/js/admin.js"></script>
+
+</body>
+</html>

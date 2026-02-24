@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h2>📊 My Stock Portfolio</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th>Symbol</th>
+  <th>Qty</th>
+  <th>Buy Price</th>
+  <th>Current</th>
+  <th>Profit / Loss</th>
+</tr>
+
+<% portfolio.forEach(stock => { %>
+<tr>
+  <td><%= stock.symbol %></td>
+  <td><%= stock.quantity %></td>
+  <td><%= stock.buyPrice %></td>
+  <td><%= stock.currentPrice %></td>
+  <td class="<%= stock.profitLoss >= 0 ? 'profit' : 'loss' %>">
+  <%= stock.profitLoss.toFixed(2) %>
+</td>
+</tr>
+<% }) %>
+
+</table>
+
+</body>
+</html>

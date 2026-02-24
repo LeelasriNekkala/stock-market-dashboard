@@ -1,0 +1,345 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #1e293b, #020617);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 60px;
+
+  /* ⭐ glass effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Logo */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Nav buttons container */
+.nav-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Hero title */
+.hero h1 {
+  font-size: 52px;
+  margin-bottom: 18px;
+  line-height: 1.2;
+  color: #22c55e; /* fallback color */
+
+  background: linear-gradient(90deg, #22c55e, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero paragraph */
+.hero p {
+  max-width: 650px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+
+/* Hero buttons wrapper */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ================= BUTTON BASE ================= */
+.btn {
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.5);
+}
+
+/* Outline button */
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #020617;
+  transform: translateY(-3px);
+}
+
+/* Large buttons */
+.btn-lg {
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
+/* ================= STOCK TICKER (OPTIONAL) ================= */
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ticker-track {
+  display: inline-block;
+  padding: 10px 0;
+  animation: tickerMove 20s linear infinite;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes tickerMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 18px 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+}
+/* ================= AUTH PAGES ================= */
+
+/* auth body override (only for login/register pages) */
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* auth container card */
+.auth-container {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 35px;
+  border-radius: 14px;
+
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* title */
+.auth-container h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* form layout */
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* inputs */
+.auth-container input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.25s;
+}
+
+.auth-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.auth-container input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+}
+
+/* button */
+.auth-container button {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+}
+
+.auth-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.5);
+}
+
+/* link */
+.auth-container a {
+  display: block;
+  margin-top: 18px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #38bdf8;
+  transition: 0.2s;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 20px;
+    padding: 30px 22px;
+  }
+}
+/* ================= DASHBOARD ================= */
+
+h2 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+/* Table container spacing */
+table {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Table header */
+th {
+  background: #1e293b;
+  padding: 14px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Table cells */
+td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 15px;
+}
+
+/* Zebra rows */
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Hover effect */
+tr:hover {
+  background: rgba(34, 197, 94, 0.15);
+  transition: 0.25s ease;
+}
+
+/* Profit & Loss colors */
+td:last-child {
+  font-weight: bold;
+}
+
+/* Positive profit */
+.profit {
+  color: #22c55e;
+}
+
+/* Negative loss */
+.loss {
+  color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}
